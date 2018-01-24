@@ -25,7 +25,6 @@ AC_CONFIG_MACRO_DIR([m4])
 AC_CONFIG_HEADERS([config.h])
 
 AC_PROG_CC
-AC_CHECK_PROGS([BZR], [bzr])
 
 # Remove AC_PROG_LIBTOOL and enable this once CentOS 5.6 support is dropped.
 # LT_INIT([disable-static])
@@ -73,13 +72,6 @@ CFLAGS="-Wall -Wextra ${CFLAGS}"
 # Get the plugin dir
 PLUGINDIR=$([$MYSQL_CONFIG --plugindir])
 AC_SUBST([PLUGINDIR])
-
-# Get the revision if bzr is present
-AS_IF([test "x${BZR}" != x],
-      [REVISION=`${BZR} revno "$srcdir"`])
-REVISION=${REVISION:-0}
-
-AC_SUBST([REVISION])
 
 AC_SUBST([AUTH_PAM_LIBS])
 AC_SUBST([DIALOG_LIBS])

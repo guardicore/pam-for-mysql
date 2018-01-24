@@ -8,15 +8,11 @@
 Compiling from Source
 =====================
 
-You will need both the PAM headers and the MySQL 5.5 headers and corresponding `mysql_config` binary available on your system.
+You will need both the PAM headers and the MySQL 5.5-5.7 headers and corresponding `mysql_config` binary available on your system.
 
 If you are not using one of the pre-built binary packages, you will need to compile the plugin from source. You can either use a source tarball or the source repository.
 
-For getting a copy of the latest development bzr tree: ::
-
-  $ bzr branch lp:percona-pam-for-mysql
-
-If you are building from bzr, you will need to generate the configure script: ::
+You will need to generate the configure script: ::
 
   $ ./bootstrap
 
