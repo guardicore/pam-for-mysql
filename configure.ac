@@ -86,7 +86,5 @@ AC_SUBST([DIALOG_LIBS])
 
 # Output files
 AC_CONFIG_FILES([Makefile
-                 src/Makefile
-                 build/build-binary.sh
-                 build/percona-pam-plugin.spec])
+                 src/Makefile])
 AC_OUTPUT
