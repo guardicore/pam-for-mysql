@@ -151,7 +151,10 @@ static struct st_mysql_auth pam_auth_handler=
 {
   MYSQL_AUTHENTICATION_INTERFACE_VERSION,
   "dialog",
-  &authenticate_user_with_pam_server
+  &authenticate_user_with_pam_server,
+  &generate_auth_string_hash,
+  &validate_auth_string_hash,
+  &set_salt
 };
 
 mysql_declare_plugin(auth_pam)

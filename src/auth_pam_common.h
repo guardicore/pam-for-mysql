@@ -67,6 +67,14 @@ void auth_pam_client_talk_finalize(void *talk_data);
 
 int authenticate_user_with_pam_server (MYSQL_PLUGIN_VIO *vio,
                                        MYSQL_SERVER_AUTH_INFO *info);
+int generate_auth_string_hash(char *outbuf, unsigned int *buflen,
+                              const char *inbuf, unsigned int inbuflen);
+int validate_auth_string_hash(char* const inbuf  __attribute__((unused)),
+                              unsigned int buflen  __attribute__((unused)));
+int set_salt(const char* password __attribute__((unused)),
+             unsigned int password_len __attribute__((unused)),
+             unsigned char* salt __attribute__((unused)),
+             unsigned char* salt_len);
 
 #ifdef __cplusplus
 }

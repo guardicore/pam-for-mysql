@@ -186,3 +186,32 @@ int authenticate_user_with_pam_server (MYSQL_PLUGIN_VIO *vio,
 
   return CR_OK;
 }
+
+
+int generate_auth_string_hash(char *outbuf, unsigned int *buflen,
+                              const char *inbuf, unsigned int inbuflen)
+{
+  /*
+    fail if buffer specified by server cannot be copied to output buffer
+  */
+  if (*buflen < inbuflen)
+    return 1;   /* error */
+  strncpy(outbuf, inbuf, inbuflen);
+  *buflen= strlen(inbuf);
+  return 0;     /* success */
+}
+
+int validate_auth_string_hash(char* const inbuf  __attribute__((unused)),
+                              unsigned int buflen  __attribute__((unused)))
+{
+  return 0;     /* success */
+}
+
+int set_salt(const char* password __attribute__((unused)),
+             unsigned int password_len __attribute__((unused)),
+             unsigned char* salt __attribute__((unused)),
+             unsigned char* salt_len)
+{
+  *salt_len= 0;
+  return 0;     /* success */
+}
